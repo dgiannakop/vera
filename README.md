@@ -1,1 +1,1 @@
-Commande ECHO activ‚e.
+<h1>Paint is still wet</h1>
