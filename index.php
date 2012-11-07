@@ -8,6 +8,9 @@ $app->get('/', function() use($app){
 	$app->render('index.html');
 });
 
+$app->get('/admin', function() use($app){
+	$app->render('admin/index.html');
+});
 
 $app->run();
 ?>
