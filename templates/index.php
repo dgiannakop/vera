@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -8,6 +8,11 @@
 	<link href="/vera/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>	
 	<script type="text/javascript" src="/vera/bootstrap/js/bootstrap.min.js"></script>
+<style>
+.well:hover{
+	background-color: #eee;
+}
+</style>
 </head>
 <body>
 <div class="container">
@@ -34,11 +39,53 @@
 	  </div>
 	</div>
 </div>
-	<div class="container">
-		<h1>The Landing Page</h1>
+<div class="container">
+		<h2>Températures</h2>
+		<div class="row">
+			<?php
+			require_once('./config.php');
+			require_once('./components/lib_vera.php');
+			
+			$box= new VeraUnit();
+			$box->Address='vera';
+			$boxConf=$box->getConfig();
+			
+			
+			foreach ($boxConf->devices as $device){
+				if ($device->category==17){
+					$t=new TemperatureDevice($box,$device->name,$device->id);			
+			?>
+					<div class="span2 well">
+					<h4 class="muted"><small><strong><?php echo $t->Name ?></strong></small></h4>
+					<h1 class="pull-right"><i class="icon-asterisk"></i> <?php echo $t->getTemperature()."°".$boxConf->temperature; ?></h1>
+					</div>
+			<?php
+				}
+			
+			}
+			?>
+	
+		</div>
+		<h2>Hygrométrie</h2>
+	<div class="row">
+		<?php
+			foreach ($boxConf->devices as $device){
+				if ($device->category==16){
+					$h=new HygroDevice($box,$device->name,$device->id);		
+		?>
+		<div class="span2 well">
+					<h4 class="muted"><small><strong><?php echo $h->Name ?></strong></small></h4>
+					<h1 class="pull-right"><i class="icon-tint"></i> <?php echo $h->getHum(); ?>%</h12>
+					</div>
+		<?php
+				}
+			
+			}
+			?>
+
+	</div>
 		
 	</div>
-</div>
 </div>
 </body>
 </html>

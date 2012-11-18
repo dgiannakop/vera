@@ -5,7 +5,7 @@ $app = new \Slim\Slim();
 $app->config(array('templates.path' => './templates'));
 
 $app->get('/', function() use($app){
-	$app->render('index.html');
+	$app->render('index.php');
 });
 
 $app->get('/admin', function() use($app){
