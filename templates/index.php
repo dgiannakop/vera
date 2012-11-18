@@ -55,10 +55,12 @@
 				if ($device->category==17){
 					$t=new TemperatureDevice($box,$device->name,$device->id);			
 			?>
-					<div class="span2 well">
-					<h4 class="muted"><small><strong><?php echo $t->Name ?></strong></small></h4>
-					<h1 class="pull-right"><i class="icon-asterisk"></i> <?php echo $t->getTemperature()."°".$boxConf->temperature; ?></h1>
-					</div>
+			<div class="span2 well">
+					<!-- <h6 class="pull-right"><i class="icon-signal"></i> <small><?php echo $t->getBatteryLevel(); ?>%</small></h6> -->
+					<h6 class="muted"><strong><?php echo $t->Name ?></strong></h6>
+					
+					<h2 class="pull-right"><i class="icon-asterisk"></i> <?php echo $t->getTemperature()."°".$boxConf->temperature; ?></h2>
+										</div>
 			<?php
 				}
 			
@@ -74,8 +76,10 @@
 					$h=new HygroDevice($box,$device->name,$device->id);		
 		?>
 		<div class="span2 well">
-					<h4 class="muted"><small><strong><?php echo $h->Name ?></strong></small></h4>
-					<h1 class="pull-right"><i class="icon-tint"></i> <?php echo $h->getHum(); ?>%</h12>
+					<!--<h6 class="pull-right"><i class="icon-signal"></i> <small><?php echo $h->getBatteryLevel(); ?> %</small></h6> -->
+					<h6 class="muted"><small><strong><?php echo $h->Name ?></strong></small></h6>
+					<h2 class="pull-right"><i class="icon-tint"></i> <?php echo $h->getHum(); ?>% </h2>
+					
 					</div>
 		<?php
 				}

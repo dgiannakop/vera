@@ -11,6 +11,9 @@ $app->get('/', function() use($app){
 $app->get('/admin', function() use($app){
 	$app->render('admin/index.html');
 });
+$app->get('/graph/temperature', function() use($app){
+	$app->render('gtemperature.php');
+});
 
 $app->run();
 ?>

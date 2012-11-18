@@ -9,8 +9,10 @@ $boxConf=$box->getConfig();
 
 foreach ($boxConf->devices as $device){
 	if ($device->category==17){
+			 
 		$t=new TemperatureDevice($box,$device->name,$device->id);
-		write_measure($device->id,$t->getTemperature());
+		write_measure($t->DeviceNum,$t->getTemperature());
+		//echo $t->DeviceNum.":".$t->getTemperature()."\n";
 	}
 }
 ?>

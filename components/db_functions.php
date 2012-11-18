@@ -5,6 +5,7 @@ function write_measure($vera_device_id,$value){
 	global $db;
 
 	$local_id=get_device_local_id($vera_device_id);
+	//echo "insert into measures(id,value,device_id,ts) values(NULL,$value,$local_id,CURRENT_TIMESTAMP)\n";
 	$stmt=$db->exec('insert into measures(id,value,device_id,ts) values(NULL,'.$value.','.	$local_id.',CURRENT_TIMESTAMP)');
 }
 

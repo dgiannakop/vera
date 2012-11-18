@@ -29,8 +29,8 @@ class Device{
 	
 	function __construct($box){
 	}
-	public function getValue($var){
-		$url="http://".$this->box->Address.":".$this->box->Port."/data_request?id=lu_variableget&DeviceNum=".$this->DeviceNum."&serviceId=".$this->ServiceId."&Variable=".$var;
+	public function getValue($service,$variable){
+		$url="http://".$this->box->Address.":".$this->box->Port."/data_request?id=lu_variableget&DeviceNum=".$this->DeviceNum."&serviceId=".$service."&Variable=".$variable;
 		//echo "\n$url\n";
 		$ch=curl_init();
 		curl_setopt($ch,CURLOPT_URL,$url);
@@ -61,7 +61,10 @@ class TemperatureDevice extends Device{
 	}
 	//get the temperature value from the device
 	function getTemperature(){
-		return $this->getValue($this->Variable);
+		return $this->getValue($this->ServiceId,$this->Variable);
+	}
+	function getBatteryLevel(){
+		return $this->getValue('urn:micasaverde-com:serviceId:HaDevice1','BatteryLevel');
 	}
 }
 class HygroDevice extends Device{
@@ -74,7 +77,10 @@ class HygroDevice extends Device{
 		$this->box=$box;
 	}
 	function getHum(){
-		return $this->getValue($this->Variable);
+		return $this->getValue($this->ServiceId,$this->Variable);
+	}
+	function getBatteryLevel(){
+		return $this->getValue('urn:micasaverde-com:serviceId:HaDevice1','BatteryLevel');
 	}
 }
 ?>
