@@ -1,0 +1,5 @@
+tests/index.php
+templates/365.json
+.DS_Store
+img/Thumbs.db
+temp/temp_365.json
