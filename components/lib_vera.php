@@ -39,6 +39,16 @@ class Device{
 		curl_close($ch);
 		return json_decode($json_output);
 	}
+	public function setValue($service,$variable){
+		$url="http://".$this->box->Address.":".$this->box->Port."/data_request?id=lu_variableget&DeviceNum=".$this->DeviceNum."&serviceId=".$service."&Variable=".$variable;
+		//echo "\n$url\n";
+		$ch=curl_init();
+		curl_setopt($ch,CURLOPT_URL,$url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		//$json_output=curl_exec($ch);
+		curl_close($ch);
+		return json_decode($json_output);
+	}
 }
 
 class Room{
@@ -83,4 +93,30 @@ class HygroDevice extends Device{
 		return $this->getValue('urn:micasaverde-com:serviceId:HaDevice1','BatteryLevel');
 	}
 }
+class SwitchDevice extends Device{
+	function __construct($box,$name,$device_id){
+		$this->Type="ZWave switch";
+		$this->ServiceId="urn:schemas-upnp-org:device:BinaryLight:1";
+		$this->Variable="urn:upnp-org:serviceId:SwitchPower1";
+		$this->DeviceNum=$device_id;
+		$this->Name=$name;
+		$this->box=$box;
+	}
+	function status(){
+		return $this->getValue($this->ServiceId,$this->Variable);
+	}
+	function Power(){
+		return $this->getValue($this->ServiceId,'urn:micasaverde-com:serviceId:EnergyMetering1');
+	}
+	function on(){
+		//return $this->setValue('urn:micasaverde-com:serviceId:HaDevice1','BatteryLevel');
+	}
+	function off(){
+		return $this->setValue('urn:micasaverde-com:serviceId:HaDevice1','BatteryLevel');
+	}
+	function ResetPower(){
+	}
+}
+
+
 ?>

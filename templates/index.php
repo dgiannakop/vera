@@ -6,7 +6,11 @@
 	<link rel="icon" href="/vera/favicon.png">	
 	<link href="/vera/bootstrap/css/bootstrap.css" rel="stylesheet">
 	<link href="/vera/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>	
+	<link href="/vera/css/slideControl.css" rel="stylesheet">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/vera/js/jquery.slideControl.js"></script>
+
+	<script type="text/javascript" src="/vera/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/vera/bootstrap/js/bootstrap.min.js"></script>
 <style>
 .well:hover{
@@ -88,8 +92,37 @@
 			?>
 
 	</div>
-		
+		<h2>Interrupteurs</h2>
+		<div class="row">
+			<div class="span2 well">
+				<h6 class="muted"><small><strong>Commande VMC</strong></small></h6>
+				<div class="btn-group" data-toggle="buttons-radio">
+  					<button class="btn btn-small"><i class="icon-plus-sign"></i></button>
+					<button  class="btn btn-small active"><i class="icon-minus-sign"></i></button>
+				</div>
+				<h2 class="pull-right">25W </h2>
+			</div>
+		</div>
+		<h2>Variateurs</h2>
+		<div class="row">
+			<div class="span2 well">
+				<h6 class="muted"><small><strong>Table d'hôte</strong></small></h6>
+				<div class="btn-group" data-toggle="buttons-radio">
+  					<button class="btn btn-small"><i class="icon-plus-sign"></i></button>
+					<button  class="btn btn-small active"><i class="icon-minus-sign"></i></button>
+
+						
+				</div>
+				<div width="100px">
+				<label>R:</label><input type="text" value="6.0" class="slideControl" />
+				</div>
+			<h2 class="pull-right">25W </h2>
 	</div>
 </div>
+<script>
+$(document).ready(function() {
+	$('.slideControl').slideControl({lowerBound:0,upperBound:100});
+});
+</script>
 </body>
 </html>
