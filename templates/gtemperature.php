@@ -19,6 +19,9 @@
 		months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 
 			'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
 		weekdays: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
+	},
+global: {
+		useUTC: false
 	}
 	});
 		// Create the chart
@@ -26,6 +29,7 @@
 			chart : {
 				renderTo : 'container'
 			},
+			
 			xAxis: {
                     type: 'datetime',
 				dateTimeLabelFormats: {

@@ -8,7 +8,6 @@
 	<link href="/vera/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 	<link href="/vera/css/slideControl.css" rel="stylesheet">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-	<script type="text/javascript" src="/vera/js/jquery.slideControl.js"></script>
 
 	<script type="text/javascript" src="/vera/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/vera/bootstrap/js/bootstrap.min.js"></script>
@@ -113,16 +112,8 @@
 
 						
 				</div>
-				<div width="100px">
-				<label>R:</label><input type="text" value="6.0" class="slideControl" />
-				</div>
 			<h2 class="pull-right">25W </h2>
 	</div>
 </div>
-<script>
-$(document).ready(function() {
-	$('.slideControl').slideControl({lowerBound:0,upperBound:100});
-});
-</script>
 </body>
 </html>
